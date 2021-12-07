@@ -20,10 +20,11 @@ const usersRoute = require("./Routers/users");
 const convoRoute = require("./Routers/Conversation");
 const messageRoute = require("./Routers/Message");
 
-dotenv.config();
+var test = dotenv.config();
+
 const PORT = process.env.PORT || 5000;
 mongoose.connect(
-  process.env.MONGO_URL,
+  process.env.MONGODB_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Connected to MongoDB");
@@ -66,7 +67,6 @@ app.use("/api/messages/", messageRoute);
 server.listen(PORT || 8900, () => {
   console.log("Backend server is running!");
 });
-
 
 let users = [];
 
